@@ -16,8 +16,15 @@
                    (= (:retention/category retention) :ret_fuente))
                  (:retentionable/retentions item)))
              (and
-               )))
-         )))
+               (not-any?
+                 (fn [tax]
+                   (= (:tax/category tax) :iva))
+                 (:taxable/taxes item))
+               (some
+                 (fn [retention]
+                   (and (= (:retention/category retention) :ret_fuente)
+                        (= (:retention/rate retention) 1)))
+                 (:retentionable/retentions item))))))))
 
 (def filtered-items (filter-invoice-items (:invoice/items invoice)))
 (println filtered-items)
