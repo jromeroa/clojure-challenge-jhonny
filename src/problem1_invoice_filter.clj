@@ -1,4 +1,6 @@
-(def invoice (clojure.edn/read-string (slurp "../invoice.edn")))
+(ns problem1-invoice-filter)
+
+(def invoice (clojure.edn/read-string (slurp "invoice.edn")))
 
 (defn filter-invoice-items [items]
   (->> items
@@ -27,4 +29,8 @@
                  (:retentionable/retentions item))))))))
 
 (def filtered-items (filter-invoice-items (:invoice/items invoice)))
-(println filtered-items)
+
+(defn -main [] ;Define function main for test the filter
+  (println filtered-items)) ;Print items filter with result
+
+

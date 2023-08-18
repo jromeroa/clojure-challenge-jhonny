@@ -22,6 +22,6 @@
             (doseq [explanation (s/explain-data ::spec/invoice json-data)]
               (println explanation))))))))
 
-(defn -main []
+(defn -main []  ;Define function main for test the validator
   (let [filename "invoice.json"]
     (validate-invoice filename)))
