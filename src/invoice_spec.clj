@@ -27,9 +27,8 @@
                 :invoice-item/taxes]))
 
 (s/def :invoice/issue-date inst?)
+
 (s/def :invoice/items (s/coll-of ::invoice-item :kind vector? :min-count 1))
 
-(s/def ::invoice
-  (s/keys :req [:invoice/issue-date
-                :invoice/customer
-                :invoice/items]))
+(s/def ::invoice (s/keys :req [:invoice/issue-date
+                                :invoice/customer]))

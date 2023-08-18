@@ -1,4 +1,4 @@
-(def invoice (clojure.edn/read-string (slurp "/Users/jhonny/projects/clojure-challenge-jhonny/invoice.edn")))
+(def invoice (clojure.edn/read-string (slurp "../invoice.edn")))
 
 (defn filter-invoice-items [items]
   (->> items
