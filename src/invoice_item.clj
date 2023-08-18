@@ -8,5 +8,12 @@
   [{:invoice-item/keys [precise-quantity precise-price discount-rate]
     :as                item
     :or                {discount-rate 0}}]
-  (* precise-price precise-quantity (discount-factor item)))
+  (if (and (not (nil? precise-quantity))
+           (not (nil? precise-price))
+           (not (nil? discount-rate))
+           (not (neg? precise-quantity))
+           (not (neg? precise-price))
+           (not (neg? discount-rate)))
+    (* precise-price precise-quantity (discount-factor item))
+    0.0)) ; Return 0 or any other default value if any of the values is nil
 
